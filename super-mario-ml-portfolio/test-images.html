@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background: #f0f0f0;
+        }
+        .test-container {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 10px 0;
+        }
+        img {
+            border: 2px solid #333;
+            margin: 10px;
+        }
+        .error {
+            color: red;
+            font-weight: bold;
+        }
+        .success {
+            color: green;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>Image Loading Test</h1>
+    
+    <div class="test-container">
+        <h2>Mario Image Test</h2>
+        <p>Testing: assets/mario.png</p>
+        <img src="assets/mario.png" alt="Mario" style="width: 100px; height: 100px;" 
+             onload="document.getElementById('mario-status').innerHTML='✅ Mario image loaded successfully!'" 
+             onerror="document.getElementById('mario-status').innerHTML='❌ Mario image failed to load!'">
+        <p id="mario-status">Loading...</p>
+    </div>
+    
+    <div class="test-container">
+        <h2>Green Tube Image Test</h2>
+        <p>Testing: assets/green-tube.png</p>
+        <img src="assets/green-tube.png" alt="Green Tube" style="width: 100px; height: 100px;" 
+             onload="document.getElementById('tube-status').innerHTML='✅ Green tube image loaded successfully!'" 
+             onerror="document.getElementById('tube-status').innerHTML='❌ Green tube image failed to load!'">
+        <p id="tube-status">Loading...</p>
+    </div>
+    
+    <div class="test-container">
+        <h2>Alternative Paths Test</h2>
+        <p>Testing with different path formats:</p>
+        
+        <h3>Relative path (./assets/)</h3>
+        <img src="./assets/mario.png" alt="Mario" style="width: 50px; height: 50px;" 
+             onload="document.getElementById('mario-alt1').innerHTML='✅ ./assets/mario.png works!'" 
+             onerror="document.getElementById('mario-alt1').innerHTML='❌ ./assets/mario.png failed!'">
+        <p id="mario-alt1">Loading...</p>
+        
+        <h3>Absolute path from current directory</h3>
+        <img src="/assets/mario.png" alt="Mario" style="width: 50px; height: 50px;" 
+             onload="document.getElementById('mario-alt2').innerHTML='✅ /assets/mario.png works!'" 
+             onerror="document.getElementById('mario-alt2').innerHTML='❌ /assets/mario.png failed!'">
+        <p id="mario-alt2">Loading...</p>
+    </div>
+    
+    <div class="test-container">
+        <h2>Instructions</h2>
+        <p><strong>If images don't load:</strong></p>
+        <ol>
+            <li>Make sure you're opening the HTML file through a web server (not double-clicking the file)</li>
+            <li>Try using a local web server like Live Server in VS Code</li>
+            <li>Or use Python's built-in server: <code>python -m http.server 8000</code></li>
+            <li>Then open: <code>http://localhost:8000</code></li>
+        </ol>
+    </div>
+</body>
+</html>

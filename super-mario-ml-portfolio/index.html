@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mario Saleh - Super Mario ML Portfolio</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <!-- Game Background -->
+    <div class="game-background">
+        <div class="clouds"></div>
+        <div class="mountains"></div>
+        <div class="ground"></div>
+    </div>
+
+    <!-- Mario Character -->
+    <div class="mario-character" id="mario">
+        <img src="./assets/mario.png" alt="Mario" class="mario-sprite">
+    </div>
+
+    <!-- Navigation Tubes -->
+    <div class="tube-navigation">
+        <div class="tube tube-0" data-section="home">
+            <img src="./assets/green-tube.png" alt="Green Tube" class="tube-sprite">
+            <span class="tube-label">Home</span>
+        </div>
+        <div class="tube tube-1" data-section="about">
+            <img src="./assets/green-tube.png" alt="Green Tube" class="tube-sprite">
+            <span class="tube-label">About</span>
+        </div>
+        <div class="tube tube-2" data-section="skills">
+            <img src="./assets/green-tube.png" alt="Green Tube" class="tube-sprite">
+            <span class="tube-label">Skills</span>
+        </div>
+        <div class="tube tube-3" data-section="projects">
+            <img src="./assets/green-tube.png" alt="Green Tube" class="tube-sprite">
+            <span class="tube-label">Projects</span>
+        </div>
+        <div class="tube tube-4" data-section="experience">
+            <img src="./assets/green-tube.png" alt="Green Tube" class="tube-sprite">
+            <span class="tube-label">Experience</span>
+        </div>
+        <div class="tube tube-5" data-section="contact">
+            <img src="./assets/green-tube.png" alt="Green Tube" class="tube-sprite">
+            <span class="tube-label">Contact</span>
+        </div>
+    </div>
+
+    <!-- Main Content Sections -->
+    <div class="content-container">
+        <!-- Home Section -->
+        <section class="home-section" id="home">
+            <div class="home-content">
+                <h1 class="game-title">MARIO ML</h1>
+                <h2 class="subtitle">Mario Saleh's Machine Learning Adventure</h2>
+                <p class="hero-description">
+                    Welcome to my digital world where Super Mario meets Machine Learning! 
+                    Jump through the green tubes to explore my journey in AI, data science, and software development.
+                </p>
+                <div class="score-display">
+                    <span class="score-label">ML Level:</span>
+                    <span class="score-value">Medium</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Hero Section
+        <section class="hero-section" id="hero">
+            <div class="hero-content">
+                <h1 class="game-title">SUPER MARIO ML</h1>
+                <h2 class="subtitle">Mario Saleh's Machine Learning Adventure</h2>
+                <p class="hero-description">
+                    Welcome to my digital world where Super Mario meets Machine Learning! 
+                    Jump through the green tubes to explore my journey in AI, data science, and software development.
+                </p>
+                <div class="score-display">
+                    <span class="score-label">ML Level:</span>
+                    <span class="score-value">EXPERT</span>
+                </div>
+            </div>
+        </section> -->
+
+        <!-- About Section -->
+        <section class="content-section" id="about">
+            <div class="section-tube">
+                <!-- <img src="./assets/green-tube.png" alt="Green Tube" class="section-tube-sprite"> -->
+            </div>
+            <div class="section-content">
+                <h2 class="section-title">About Mario</h2>
+                <div class="about-content">
+                    <div class="mario-info">
+                        <!-- <img src="./assets/mario.png" alt="Mario" class="about-mario"> -->
+                        <div class="info-text">
+                            <p>Hello! My name is Mario Saleh.. I am an AI and deep learning enthusiast with a strong foundation in machine learning, Deep learning, and software development. Through various projects and research, I have developed critical thinking, problem-solving, and adaptability skills. I am also passionate about sharing knowledge and collaborating with others in the AI field. </p>
+                            
+                            <p>My journey in the world of Machine Learning has been an exciting adventure, 
+                            filled with learning new algorithms, building predictive models, and creating 
+                            intelligent systems that make a real impact.</p>
+                            <p>Working collaboratively within a team towards a shared objective has been an incredibly rewarding and unique experience for me. I am eager to continue exploring exciting projects in the future, with a particular interest in AI development.</p>
+                            <div class="stats-grid">
+                                <div class="stat-item">
+                                    <span class="stat-number">1+</span>
+                                    <span class="stat-label">Years Experience</span>
+                                </div>
+                                <div class="stat-item">
+                                    <span class="stat-number">10+</span>
+                                    <span class="stat-label">ML Projects</span>
+                                </div>
+                                <div class="stat-item">
+                                    <span class="stat-number">5+</span>
+                                    <span class="stat-label">Technologies</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section class="content-section" id="skills">
+            <div class="section-tube">
+                <!-- <img src="./assets/green-tube.png" alt="Green Tube" class="section-tube-sprite"> -->
+            </div>
+            <div class="section-content">
+                <h2 class="section-title">Power-Ups & Skills</h2>
+                <div class="skills-grid">
+                    <div class="skill-category">
+                        <h3 class="category-title">Machine Learning</h3>
+                        <div class="skill-items">
+                            <div class="skill-item">
+                                <span class="skill-name">Python</span>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-width="80%"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <span class="skill-name">TensorFlow</span>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-width="55%"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <span class="skill-name">PyTorch</span>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-width="40%"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <span class="skill-name">Scikit-learn</span>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-width="75%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-category">
+                        <h3 class="category-title">Data Science</h3>
+                        <div class="skill-items">
+                            <div class="skill-item">
+                                <span class="skill-name">Pandas</span>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-width="95%"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <span class="skill-name">NumPy</span>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-width="90%"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <span class="skill-name">Matplotlib</span>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-width="75%"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <span class="skill-name">SQL</span>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-width="85%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-category">
+                        <h3 class="category-title">Tools & Technologies</h3>
+                        <div class="skill-items">
+                            <div class="skill-item">
+                                <span class="skill-name">Git</span>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-width="90%"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <span class="skill-name">Docker</span>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-width="40%"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <span class="skill-name">AWS</span>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-width="60%"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <span class="skill-name">Jupyter</span>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-width="95%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section class="content-section" id="projects">
+            <div class="section-tube">
+                <!-- <img src="./assets/green-tube.png" alt="Green Tube" class="section-tube-sprite"> -->
+            </div>
+            <div class="section-content">
+                <h2 class="section-title">ML Adventures</h2>
+                <div class="projects-grid">
+                    <div class="project-card" >
+                        <div class="project-header">
+                            <h3 class="project-title">Num_GAN</h3>
+                            <span class="project-type">Generative AI</span>
+                        </div>
+                        <p class="project-description">
+                            A Deep learning Generative Adversarial Network model for generating a fake images for a hand-written number from 0 to 9
+                        </p>
+                      
+                        <div class="project-tech">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">TensorFlow</span>
+                            <span class="tech-tag">Jupyter Notebook</span>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <div class="project-header">
+                            <h3 class="project-title">Link</h3>
+                            <span class="project-type">Networking</span>
+                        </div>
+                        <p class="project-description">
+                            a Java-based chat application designed to facilitate real-time communication between users. The application supports one-on-one chat, providing a user-friendly interface for seamless interaction. I have participated in this project by creating the server-side and the client-sides.
+                        </p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Java</span>
+                            <span class="tech-tag">CSS</span>
+                            <span class="tech-tag">Xampp</span>
+                        </div>
+                    </div>
+                    
+                 
+                    
+                    <div class="project-card" >
+                        <div class="project-header">
+                            <h3 class="project-title">3D-About-Us-Carousel</h3>
+                            <span class="project-type">FrontEnd Development</span>
+                        </div>
+                        <p class="project-description">
+                            An interactive 3D carousel built with Three.js to showcase team members. Features rotating planes with hover and click effects, dynamic descriptions, and social media links. Perfect for 'About Us' pages or portfolio showcases.
+                        </p>
+                        <div class="project-tech">
+                            <span class="tech-tag">JavaScript</span>
+                            <span class="tech-tag">ThreeJS</span>
+                            <span class="tech-tag">HTML</span>
+                            <span class="tech-tag">CSS</span>
+                        </div>
+                    </div>
+                    
+                    <!-- <div class="project-card">
+                        <div class="project-header">
+                            <h3 class="project-title">NLP Chatbot</h3>
+                            <span class="project-type">Natural Language Processing</span>
+                        </div>
+                        <p class="project-description">
+                            Engineered an intelligent conversational AI using transformer models and 
+                            fine-tuned language models for context-aware responses and multi-language support.
+                        </p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Transformers</span>
+                            <span class="tech-tag">BERT</span>
+                            <span class="tech-tag">FastAPI</span>
+                        </div>
+                    </div> -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Experience Section -->
+        <section class="content-section" id="experience">
+            <div class="section-tube">
+                <!-- <img src="./assets/green-tube.png" alt="Green Tube" class="section-tube-sprite"> -->
+            </div>
+            <div class="section-content">
+                <h2 class="section-title">Level Progression</h2>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <h3 class="timeline-title">Senior ML Engineer</h3>
+                            <span class="timeline-company">Tech Company</span>
+                            <span class="timeline-date">2022 - Present</span>
+                            <p class="timeline-description">
+                                Leading machine learning initiatives, developing scalable AI solutions, 
+                                and mentoring junior engineers in advanced ML techniques and best practices.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <h3 class="timeline-title">Data Scientist</h3>
+                            <span class="timeline-company">Data Analytics Firm</span>
+                            <span class="timeline-date">2020 - 2022</span>
+                            <p class="timeline-description">
+                                Built predictive models, performed statistical analysis, and created 
+                                data-driven insights that improved business decision-making processes.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <h3 class="timeline-title">ML Research Intern</h3>
+                            <span class="timeline-company">Research Institute</span>
+                            <span class="timeline-date">2019 - 2020</span>
+                            <p class="timeline-description">
+                                Conducted research in deep learning, published papers on novel algorithms, 
+                                and contributed to open-source ML libraries and frameworks.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section class="content-section" id="contact">
+            <div class="section-tube">
+                <!-- <img src="./assets/green-tube.png" alt="Green Tube" class="section-tube-sprite"> -->
+            </div>
+            <div class="section-content">
+                <h2 class="section-title">Let's Play Together!</h2>
+                <div class="contact-content">
+                    <div class="contact-info">
+                        <p class="contact-description">
+                            Ready to start a new ML adventure? Let's collaborate on exciting projects 
+                            and push the boundaries of artificial intelligence together!
+                        </p>
+                        
+                        <div class="contact-methods">
+                            <div class="contact-method">
+                                <span class="contact-icon"><i class="fa-solid fa-envelope"></i></span>
+                                <a href="mailto:ramboosaleh33@email.com" class="contact-link">ramboosaleh33@email.com</a>
+                            </div>
+                            <div class="contact-method">
+                                <span class="contact-icon"><i class="fa-brands fa-linkedin"></i></span>
+                                
+                                <a href="https://linkedin.com/in/mario-saleh33" target="_blank" class="contact-link">LinkedIn</a>
+                            </div>
+                            <div class="contact-method">
+                                <span class="contact-icon"><i class="fa-brands fa-github"></i></span>
+                                
+                                <a href="https://github.com/marioramboo" target="_blank" class="contact-link">GitHub</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-form">
+                        <form class="ml-form">
+                            <div class="form-group">
+                                <input type="text" placeholder="Your Name" class="form-input">
+                            </div>
+                            <div class="form-group">
+                                <input type="email" placeholder="Your Email" class="form-input">
+                            </div>
+                            <div class="form-group">
+                                <textarea placeholder="Your Message" class="form-textarea"></textarea>
+                            </div>
+                            <button type="submit" class="submit-button">Send Message</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Game UI Elements -->
+    <div class="game-ui">
+        <div class="lives-display">
+            <span class="lives-label">Lives:</span>
+            <span class="lives-count">∞</span>
+        </div>
+        <div class="coins-display">
+            <span class="coins-label">Coins:</span>
+            <span class="coins-count">1000</span>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

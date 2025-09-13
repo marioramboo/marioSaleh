@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mario Saleh - Super Mario ML Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <style>
+        /* Super Mario ML Portfolio Styles */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Press Start 2P', monospace;
+            background: linear-gradient(180deg, #87CEEB 0%, #98FB98 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Game Background */
+        .game-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .clouds {
+            position: absolute;
+            top: 20%;
+            width: 100%;
+            height: 200px;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 20"><circle cx="20" cy="10" r="8" fill="white" opacity="0.8"/><circle cx="30" cy="8" r="6" fill="white" opacity="0.8"/><circle cx="40" cy="10" r="7" fill="white" opacity="0.8"/><circle cx="60" cy="12" r="9" fill="white" opacity="0.8"/><circle cx="70" cy="10" r="5" fill="white" opacity="0.8"/><circle cx="80" cy="8" r="7" fill="white" opacity="0.8"/></svg>') repeat-x;
+            animation: cloudMove 20s linear infinite;
+        }
+
+        .mountains {
+            position: absolute;
+            bottom: 200px;
+            width: 100%;
+            height: 150px;
+            background: linear-gradient(45deg, #8B4513 0%, #A0522D 50%, #8B4513 100%);
+            clip-path: polygon(0% 100%, 0% 60%, 20% 40%, 40% 50%, 60% 30%, 80% 45%, 100% 35%, 100% 100%);
+        }
+
+        .ground {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(180deg, #228B22 0%, #32CD32 50%, #228B22 100%);
+            border-top: 4px solid #006400;
+        }
+
+        @keyframes cloudMove {
+            0% { transform: translateX(-100px); }
+            100% { transform: translateX(100vw); }
+        }
+
+        /* Mario Character */
+        .mario-character {
+            position: fixed;
+            bottom: 200px;
+            left: 50px;
+            z-index: 1000;
+            transition: all 0.5s ease;
+        }
+
+        .mario-sprite {
+            width: 60px;
+            height: 60px;
+            image-rendering: pixelated;
+            filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.3));
+            animation: marioBounce 2s ease-in-out infinite;
+        }
+
+        @keyframes marioBounce {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .mario-character.jumping {
+            animation: marioJump 0.6s ease-out;
+        }
+
+        @keyframes marioJump {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-80px); }
+            100% { transform: translateY(0px); }
+        }
+
+        /* Tube Navigation */
+        .tube-navigation {
+            position: fixed;
+            bottom: 200px;
+            right: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            z-index: 100;
+        }
+
+        .tube {
+            position: relative;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .tube:hover {
+            transform: scale(1.1);
+        }
+
+        .tube-sprite {
+            width: 50px;
+            height: 60px;
+            image-rendering: pixelated;
+            filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.3));
+            transition: all 0.3s ease;
+        }
+
+        .tube:hover .tube-sprite {
+            filter: drop-shadow(2px 2px 8px rgba(0,255,0,0.5)) brightness(1.2);
+        }
+
+        .tube-label {
+            font-size: 8px;
+            color: #006400;
+            margin-top: 5px;
+            text-shadow: 1px 1px 2px rgba(255,255,255,0.8);
+            background: rgba(255,255,255,0.8);
+            padding: 2px 6px;
+            border-radius: 3px;
+            border: 1px solid #006400;
+        }
+
+        .tube.active .tube-sprite {
+            filter: drop-shadow(2px 2px 8px rgba(255,255,0,0.8)) brightness(1.3);
+        }
+
+        .tube.active .tube-label {
+            background: #FFD700;
+            color: #8B4513;
+        }
+
+        /* Content Container */
+        .content-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            position: relative;
+            z-index: 10;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            text-align: center;
+            padding: 100px 20px;
+            background: rgba(255,255,255,0.9);
+            border-radius: 20px;
+            margin-bottom: 40px;
+            border: 4px solid #8B4513;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+        }
+
+        .game-title {
+            font-size: 3rem;
+            color: #FF0000;
+            text-shadow: 4px 4px 0px #8B4513, 8px 8px 0px rgba(0,0,0,0.3);
+            margin-bottom: 20px;
+            animation: titleGlow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes titleGlow {
+            0% { text-shadow: 4px 4px 0px #8B4513, 8px 8px 0px rgba(0,0,0,0.3); }
+            100% { text-shadow: 4px 4px 0px #8B4513, 8px 8px 0px rgba(0,0,0,0.3), 0 0 20px #FFD700; }
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            color: #006400;
+            margin-bottom: 30px;
+            text-shadow: 2px 2px 0px rgba(255,255,255,0.8);
+        }
+
+        .hero-description {
+            font-size: 0.9rem;
+            color: #333;
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 0 auto 30px;
+            text-shadow: 1px 1px 0px rgba(255,255,255,0.8);
+        }
+
+        .score-display {
+            background: linear-gradient(45deg, #FFD700, #FFA500);
+            border: 3px solid #8B4513;
+            border-radius: 10px;
+            padding: 15px 30px;
+            display: inline-block;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+
+        .score-label {
+            font-size: 0.8rem;
+            color: #8B4513;
+            margin-right: 10px;
+        }
+
+        .score-value {
+            font-size: 1rem;
+            color: #FF0000;
+            text-shadow: 1px 1px 0px rgba(255,255,255,0.8);
+        }
+
+        /* Content Sections */
+        .content-section {
+            background: rgba(255,255,255,0.95);
+            border-radius: 15px;
+            padding: 40px;
+            margin-bottom: 40px;
+            border: 3px solid #8B4513;
+            box-shadow: 0 6px 24px rgba(0,0,0,0.15);
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.6s ease;
+        }
+
+        .content-section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            color: #FF0000;
+            text-align: center;
+            margin-bottom: 30px;
+            text-shadow: 2px 2px 0px #8B4513;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(90deg, #FF0000, #FFD700, #FF0000);
+            border-radius: 2px;
+        }
+
+        /* About Section */
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .about-mario {
+            width: 120px;
+            height: 120px;
+            image-rendering: pixelated;
+            filter: drop-shadow(4px 4px 8px rgba(0,0,0,0.3));
+            animation: marioBounce 3s ease-in-out infinite;
+        }
+
+        .info-text {
+            flex: 1;
+            font-size: 0.8rem;
+            line-height: 1.8;
+            color: #333;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .stat-item {
+            text-align: center;
+            background: linear-gradient(45deg, #87CEEB, #98FB98);
+            border: 2px solid #8B4513;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        .stat-number {
+            display: block;
+            font-size: 1.5rem;
+            color: #FF0000;
+            text-shadow: 1px 1px 0px rgba(255,255,255,0.8);
+            margin-bottom: 5px;
+        }
+
+        .stat-label {
+            font-size: 0.6rem;
+            color: #006400;
+            text-shadow: 1px 1px 0px rgba(255,255,255,0.8);
+        }
+
+        /* Contact Section */
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: start;
+        }
+
+        .contact-description {
+            font-size: 0.8rem;
+            line-height: 1.8;
+            color: #333;
+            margin-bottom: 30px;
+        }
+
+        .contact-methods {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .contact-method {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            background: linear-gradient(45deg, #F0F8FF, #E6F3FF);
+            border: 2px solid #8B4513;
+            border-radius: 8px;
+            padding: 15px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .contact-icon {
+            font-size: 1.2rem;
+        }
+
+        .contact-link {
+            font-size: 0.7rem;
+            color: #006400;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .contact-link:hover {
+            color: #FF0000;
+            text-shadow: 1px 1px 0px rgba(255,255,255,0.8);
+            transform: scale(1.05);
+        }
+
+        /* Game UI */
+        .game-ui {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .lives-display, .coins-display {
+            background: rgba(0,0,0,0.8);
+            color: #FFF;
+            padding: 10px 15px;
+            border-radius: 8px;
+            border: 2px solid #FFD700;
+            font-size: 0.7rem;
+            text-shadow: 1px 1px 0px rgba(0,0,0,0.8);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+        }
+
+        .lives-label, .coins-label {
+            color: #FFD700;
+            margin-right: 10px;
+        }
+
+        .lives-count, .coins-count {
+            color: #00FF00;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .game-title {
+                font-size: 2rem;
+            }
+            
+            .subtitle {
+                font-size: 1rem;
+            }
+            
+            .about-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .contact-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .tube-navigation {
+                right: 10px;
+                bottom: 150px;
+            }
+            
+            .tube-sprite {
+                width: 40px;
+                height: 50px;
+            }
+            
+            .tube-label {
+                font-size: 6px;
+            }
+            
+            .mario-character {
+                left: 20px;
+                bottom: 150px;
+            }
+            
+            .mario-sprite {
+                width: 50px;
+                height: 50px;
+            }
+        }
+
+        /* Fallback Mario and Tube sprites using CSS */
+        .mario-fallback {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(45deg, #FF0000, #FF4500);
+            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+            position: relative;
+            border: 3px solid #8B4513;
+        }
+
+        .mario-fallback::before {
+            content: '';
+            position: absolute;
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 20px;
+            height: 20px;
+            background: #FFD700;
+            border-radius: 50%;
+            border: 2px solid #8B4513;
+        }
+
+        .mario-fallback::after {
+            content: '';
+            position: absolute;
+            bottom: 5px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40px;
+            height: 15px;
+            background: #0000FF;
+            border-radius: 5px;
+            border: 2px solid #8B4513;
+        }
+
+        .tube-fallback {
+            width: 50px;
+            height: 60px;
+            background: linear-gradient(180deg, #32CD32 0%, #228B22 100%);
+            border-radius: 10px 10px 0 0;
+            position: relative;
+            border: 3px solid #006400;
+        }
+
+        .tube-fallback::before {
+            content: '';
+            position: absolute;
+            top: -5px;
+            left: -3px;
+            right: -3px;
+            height: 10px;
+            background: linear-gradient(180deg, #32CD32 0%, #228B22 100%);
+            border-radius: 10px 10px 0 0;
+            border: 3px solid #006400;
+        }
+    </style>
+</head>
+<body>
+    <!-- Game Background -->
+    <div class="game-background">
+        <div class="clouds"></div>
+        <div class="mountains"></div>
+        <div class="ground"></div>
+    </div>
+
+    <!-- Mario Character -->
+    <div class="mario-character" id="mario">
+        <img src="./assets/mario.png" alt="Mario" class="mario-sprite" 
+             onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+        <div class="mario-fallback" style="display: none;"></div>
+    </div>
+
+    <!-- Navigation Tubes -->
+    <div class="tube-navigation">
+        <div class="tube tube-1" data-section="about">
+            <img src="./assets/green-tube.png" alt="Green Tube" class="tube-sprite"
+                 onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+            <div class="tube-fallback" style="display: none;"></div>
+            <span class="tube-label">About</span>
+        </div>
+        <div class="tube tube-2" data-section="skills">
+            <img src="./assets/green-tube.png" alt="Green Tube" class="tube-sprite"
+                 onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+            <div class="tube-fallback" style="display: none;"></div>
+            <span class="tube-label">Skills</span>
+        </div>
+        <div class="tube tube-3" data-section="projects">
+            <img src="./assets/green-tube.png" alt="Green Tube" class="tube-sprite"
+                 onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+            <div class="tube-fallback" style="display: none;"></div>
+            <span class="tube-label">Projects</span>
+        </div>
+        <div class="tube tube-4" data-section="experience">
+            <img src="./assets/green-tube.png" alt="Green Tube" class="tube-sprite"
+                 onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+            <div class="tube-fallback" style="display: none;"></div>
+            <span class="tube-label">Experience</span>
+        </div>
+        <div class="tube tube-5" data-section="contact">
+            <img src="./assets/green-tube.png" alt="Green Tube" class="tube-sprite"
+                 onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+            <div class="tube-fallback" style="display: none;"></div>
+            <span class="tube-label">Contact</span>
+        </div>
+    </div>
+
+    <!-- Main Content Sections -->
+    <div class="content-container">
+        <!-- Hero Section -->
+        <section class="hero-section" id="hero">
+            <div class="hero-content">
+                <h1 class="game-title">SUPER MARIO ML</h1>
+                <h2 class="subtitle">Mario Saleh's Machine Learning Adventure</h2>
+                <p class="hero-description">
+                    Welcome to my digital world where Super Mario meets Machine Learning! 
+                    Jump through the green tubes to explore my journey in AI, data science, and software development.
+                </p>
+                <div class="score-display">
+                    <span class="score-label">ML Level:</span>
+                    <span class="score-value">EXPERT</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section class="content-section" id="about">
+            <div class="section-content">
+                <h2 class="section-title">About Mario</h2>
+                <div class="about-content">
+                    <div class="mario-info">
+                        <img src="./assets/mario.png" alt="Mario" class="about-mario"
+                             onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <div class="mario-fallback" style="display: none; width: 120px; height: 120px;"></div>
+                        <div class="info-text">
+                            <p>Hi! I'm Mario Saleh, a passionate Machine Learning Engineer and Data Scientist. 
+                            Just like Super Mario navigates through challenging levels, I navigate through 
+                            complex data problems and AI challenges.</p>
+                            
+                            <p>My journey in the world of Machine Learning has been an exciting adventure, 
+                            filled with learning new algorithms, building predictive models, and creating 
+                            intelligent systems that make a real impact.</p>
+                            
+                            <div class="stats-grid">
+                                <div class="stat-item">
+                                    <span class="stat-number">5+</span>
+                                    <span class="stat-label">Years Experience</span>
+                                </div>
+                                <div class="stat-item">
+                                    <span class="stat-number">50+</span>
+                                    <span class="stat-label">ML Projects</span>
+                                </div>
+                                <div class="stat-item">
+                                    <span class="stat-number">10+</span>
+                                    <span class="stat-label">Technologies</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section class="content-section" id="contact">
+            <div class="section-content">
+                <h2 class="section-title">Let's Play Together!</h2>
+                <div class="contact-content">
+                    <div class="contact-info">
+                        <p class="contact-description">
+                            Ready to start a new ML adventure? Let's collaborate on exciting projects 
+                            and push the boundaries of artificial intelligence together!
+                        </p>
+                        
+                        <div class="contact-methods">
+                            <div class="contact-method">
+                                <span class="contact-icon">📧</span>
+                                <a href="mailto:mario.saleh@email.com" class="contact-link">mario.saleh@email.com</a>
+                            </div>
+                            <div class="contact-method">
+                                <span class="contact-icon">💼</span>
+                                <a href="https://linkedin.com/in/mariosaleh" target="_blank" class="contact-link">LinkedIn: /in/mariosaleh</a>
+                            </div>
+                            <div class="contact-method">
+                                <span class="contact-icon">🐙</span>
+                                <a href="https://github.com/mariosaleh" target="_blank" class="contact-link">GitHub: @mariosaleh</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Game UI Elements -->
+    <div class="game-ui">
+        <div class="lives-display">
+            <span class="lives-label">Lives:</span>
+            <span class="lives-count">∞</span>
+        </div>
+        <div class="coins-display">
+            <span class="coins-label">Coins:</span>
+            <span class="coins-count">1000</span>
+        </div>
+    </div>
+
+    <script>
+        // Simple JavaScript for basic functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            // Tube navigation
+            const tubes = document.querySelectorAll('.tube');
+            const sections = document.querySelectorAll('.content-section');
+            
+            tubes.forEach(tube => {
+                tube.addEventListener('click', function() {
+                    const sectionId = this.dataset.section;
+                    const targetSection = document.getElementById(sectionId);
+                    
+                    if (targetSection) {
+                        targetSection.scrollIntoView({ 
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+            
+            // Mario click interaction
+            const mario = document.getElementById('mario');
+            mario.addEventListener('click', function() {
+                this.classList.add('jumping');
+                setTimeout(() => {
+                    this.classList.remove('jumping');
+                }, 600);
+            });
+            
+            // Show sections on scroll
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            sections.forEach(section => {
+                observer.observe(section);
+            });
+        });
+    </script>
+</body>
+</html>
